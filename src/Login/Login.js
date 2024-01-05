@@ -12,6 +12,15 @@ export const Login = () => {
     const fnChange=(eve)=>{ 
        setInputControls(handleFieldValidation(eve,inputControls)) 
     }
+    const handleLogin=()=>{
+     const[isFormInvalid,clonedInputControls,dataObj]=handleFormValidation(inputControls)
+     if(isFormInvalid){
+      setInputControls(clonedInputControls)
+      return;
+     }
+     console.log("send the request Data")
+     console.log(dataObj) 
+    }
   return (
     <div className=' container-fluid'>
       <h2 className='text-center my-3'>Login</h2>
@@ -33,7 +42,7 @@ export const Login = () => {
       }
       <div className='row'>
         <div className=' offset-sm-5 col-sm-7'>
-          <button className='btn btn-primary me-3'>Login</button>
+          <button onClick={handleLogin} className='btn btn-primary me-3'>Login</button>
          <Link href="/register">To Register</Link>
         </div>
       </div>
