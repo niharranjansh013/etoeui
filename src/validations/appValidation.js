@@ -12,13 +12,26 @@ const validateField=(value,criteria,inputControlObj)=>{
     }
 }
 export const handleFieldValidation=(eve,inputControls)=>{
-    const{name,value}=eve.target
+    const{name,value,type,checked}=eve.target
      const clonedInputControls= JSON.parse(JSON.stringify(inputControls))
     const inputControlObj=clonedInputControls.find((obj)=>{
         return obj.model===name
     })
-    //get the data from inputControlObj
-    inputControlObj.value=value //eve.target.value
+    //for checkbox validation
+    if(type ==='checkbox'){
+      const checkedValues= inputControlObj.value?inputControlObj.value.split(","):[]
+      if(checked){
+        checkedValues.push(value)
+      }else{
+        const index=checkedValues.indexOf(value)
+        checkedValues.splice(index,1)
+      }
+      inputControlObj.value=checkedValues.join()
+    }
+    else{
+        //get the data from inputControlObj
+        inputControlObj.value=value //eve.target.value
+    }
     //to disappear the previous error message
     inputControlObj.errorMessage=""
     const criteria=inputControlObj.criteria

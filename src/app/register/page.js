@@ -19,6 +19,7 @@ const Register = () => {
      return;
     }
     alert("send the request Data")
+    console.log(dataObj) 
   }
   const prepareInputControls=(tag,obj)=>{
     switch(tag){

@@ -5,7 +5,7 @@
         "type":"text",
         "errorMessage":"",
         "model":"uid",
-        "value":"",
+        "value":"nihar@gmail.com",
         "criteria":["Required","EmailFormat"]
     },
     {

@@ -8,17 +8,17 @@ const Input = ({ type, value, handleChange, model, options, values }) => {
     case 'date':
       return (
         <>
-          <input className=' form-control' name={model} type={type} onChange={handleChange} />
+          <input  className=' form-control' name={model} type={type} onChange={handleChange} />
         </>
       );
     case 'radio':
       return (
         <>
           {
-            options.map((val) => {
+            options.map((val,index) => {
               return (
                 <>
-                  <input className="ms-3" name={model} type={type} onChange={handleChange} />{val}
+                  <input className="ms-3" value={values[index]} name={model} type={type} onChange={handleChange} />{val}
                 </>
               )
             })
@@ -29,10 +29,10 @@ const Input = ({ type, value, handleChange, model, options, values }) => {
       return (
         <>
           {
-            options.map((val) => {
+            options.map((val,ind) => {
               return (
                 <>
-                  <input className="ms-3" name={model} type={type} onChange={handleChange} />{val}
+                  <input className="ms-3" value={values[ind]} name={model} type={type} onChange={handleChange} />{val}
                 </>
               )
             })

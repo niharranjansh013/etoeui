@@ -18,7 +18,7 @@ export const Login = () => {
       setInputControls(clonedInputControls)
       return;
      }
-     console.log("send the request Data")
+     alert("send the request Data")
      console.log(dataObj) 
     }
   return (
