@@ -52,3 +52,12 @@ export const handleFormValidation=(inputControls)=>{
     })
     return [isFormInvalid,clonedInputControls,dataObj]
 }
+//to reset the form once submitted successfully
+export const formReset = (inputControls) =>{
+    const clonedInputControls=JSON.parse(JSON.stringify(inputControls))
+    clonedInputControls.forEach((inputControlObj)=>{
+        inputControlObj.value = "";
+    })
+    return clonedInputControls
+}
+

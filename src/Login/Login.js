@@ -6,20 +6,40 @@ import configuration from './configuration.json'
 // import Input from '@/inputControls/input';
 import Input from '@/inputControls/Input';
 import {handleFieldValidation,handleFormValidation} from '@/validations/appValidation'
+import { Api } from '@/common/Api';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { Cookies } from '@/common/cookies';
 export const Login = () => {
   const[inputControls,setInputControls]=useState(configuration)
+  const dispatch=useDispatch()  //alternate to appstore.dispatch
     //get the data from input
     const fnChange=(eve)=>{ 
        setInputControls(handleFieldValidation(eve,inputControls)) 
     }
-    const handleLogin=()=>{
+    const handleLogin=async()=>{
+      try{
      const[isFormInvalid,clonedInputControls,dataObj]=handleFormValidation(inputControls)
      if(isFormInvalid){
       setInputControls(clonedInputControls)
       return;
      }
-     alert("send the request Data")
-     console.log(dataObj) 
+     dispatch({type:"LOADER",payload:true})
+     const res=await Api.fnSendPostReq("std/login",{data:dataObj})
+     
+     if(res?.data?.length){
+      const{uid}=res?.data[0]
+      dispatch({type:"AUTH",payload:true})
+      Cookies.setItem("uid",uid)
+     }else{
+      toast.error("please check uid or password")
+     }
+     console.log(11,res.data)
+    }catch(ex){
+
+    }finally{
+      dispatch({type:"LOADER",payload:false})
+    }
     }
   return (
     <div className=' container-fluid'>

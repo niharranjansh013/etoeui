@@ -1,5 +1,7 @@
+import { Cookies } from "@/common/cookies";
+
 export const init={
     userInfo:{},
-    isLoggedIn:false,
+    isLoggedIn:Cookies.hasActiveSession(),
     isShowLoader:false
 }
