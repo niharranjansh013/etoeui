@@ -61,9 +61,9 @@ const Register = () => {
       <h2 className='text-center my-3'>Register</h2>
       {
         //map method contains one obj so we have destrct the purpoties of the object
-        inputControls?.map((obj) => {
+        inputControls?.map((obj,index) => {
           const { lbl, errorMessage, tag } = obj
-          return <div className='row mb-3'>
+          return <div key={`div_${index}`} className='row mb-3'>
             <div className='col-sm-5 text-end'>
               <b>{lbl}</b>
             </div>

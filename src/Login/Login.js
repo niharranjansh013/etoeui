@@ -46,8 +46,8 @@ export const Login = () => {
       <h2 className='text-center my-3'>Login</h2>
       {
         //map method contains one obj so we have destrct the purpoties of the object
-        inputControls?.map(({lbl,tag,type,errorMessage,value,model})=>{
-            return <div className='row mb-3'>
+        inputControls?.map(({lbl,tag,type,errorMessage,value,model},index)=>{
+            return <div key={`div_${index}`} className='row mb-3'>
             <div className='col-sm-5 text-end'>
                 <b>{lbl}</b>
             </div>
