@@ -30,9 +30,9 @@ export class Cookies {
     static setItem(key, value, days) {
                 if(typeof window==="undefined") return;
         if (days) {
-            window?.document.cookie = `${key}=${value};expires=${getExpiryDate(days)}`
+            document.cookie = `${key}=${value};expires=${getExpiryDate(days)}`
         } else {
-            window?.document.cookie = `${key}=${value}`
+            document.cookie = `${key}=${value}`
         }
 
     }
@@ -49,7 +49,7 @@ export class Cookies {
         const cookieArr = document?.cookie?.split(";");
         cookieArr?.forEach((val) => {
             const [key] = val.split('=');
-           window?.document.cookie = `${key}=;path=/;expires=${getOneDayBeforeDate()}`
+           document.cookie = `${key}=;path=/;expires=${getOneDayBeforeDate()}`
         })
     }
 }
