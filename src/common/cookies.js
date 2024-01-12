@@ -22,7 +22,7 @@ export class Cookies {
     static hasActiveSession = () => {
         if(typeof window==="undefined") return;
         const cookiesObj = convertCookiesToJSON();
-        if (cookiesObj["uid"]) {
+        if (cookiesObj["token"]) {
             return true;
         }
         return false
