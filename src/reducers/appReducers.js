@@ -1,16 +1,18 @@
-import { init } from "@/utils/init"
-export const appReducers=(state=init,action)=>{
-    switch(action.type){
+
+import { init } from "@/utils/init";
+
+export const appReducers = (state = init, action) => {
+    switch (action.type) {
         case 'AUTH':
-            return{
+            return {
                 ...state,
-                isLoggedIn:action.payload
+                isLoggedIn: action.payload
             }
         case 'LOADER':
-            return{
+            return {
                 ...state,
-                isShowLoader:action.payload
+                isShowLoader: action.payload
             }
     }
-    return state
+    return state;
 }

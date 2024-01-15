@@ -13,9 +13,16 @@ export class Api{
         return axios.post(BASE_URL+url,data)
     }
     static fnSendPutReq(url,data){
-        return axios.put(BASE_URL+url,data)
+        return axios.put(BASE_URL+url,data,{
+            headers:{
+                Authorization:Cookies.getItem("token")
+            }
+        })
     }
     static fnSendDeleteReq(url){
-        return axios.delete(BASE_URL+url)
+        return axios.delete(BASE_URL+url,{
+            headers:{
+                Authorization:Cookies.getItem("token")
+            }})
     }
 }

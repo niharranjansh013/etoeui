@@ -7,6 +7,6 @@ export const appStore=configureStore({
         appReducers
     },
     middleware: ()=>{
-        return []
+        return [logger]
     }
 })

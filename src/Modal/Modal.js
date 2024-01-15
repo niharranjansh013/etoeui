@@ -5,7 +5,7 @@ export const Modal = (props) => {
     return (
        <div>
           <div className={styles.mask}></div>
-          <div className={`px-3 py-3 ${modalContent}`}>
+          <div className={`px-3 py-3 ${styles.modalContent}`}>
              <h5 className="mb-5">{text}</h5>
              <div className="text-end">
                 {isShowOk && (

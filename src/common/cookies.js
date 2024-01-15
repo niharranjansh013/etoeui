@@ -20,7 +20,7 @@ const convertCookiesToJSON = () => {
 }
 export class Cookies {
     static hasActiveSession = () => {
-        if(typeof window==="undefined") return;
+        if (typeof window === 'undefined') return;
         const cookiesObj = convertCookiesToJSON();
         if (cookiesObj["token"]) {
             return true;
@@ -28,7 +28,7 @@ export class Cookies {
         return false
     }
     static setItem(key, value, days) {
-                if(typeof window==="undefined") return;
+        if (typeof window === 'undefined') return;
         if (days) {
             document.cookie = `${key}=${value};expires=${getExpiryDate(days)}`
         } else {
@@ -41,15 +41,15 @@ export class Cookies {
         return cookiesObj[key];
     }
     static removeItem(key) {
-                if(typeof window==="undefined") return;
-       window.document.cookie = `${key}=;expires=${getOneDayBeforeDate()}`
+        if (typeof window === 'undefined') return;
+        document.cookie = `${key}=;expires=${getOneDayBeforeDate()}`
     }
     static clear() {
-                if(typeof window==="undefined") return;
+        if (typeof window === 'undefined') return;
         const cookieArr = document?.cookie?.split(";");
         cookieArr?.forEach((val) => {
             const [key] = val.split('=');
-           document.cookie = `${key}=;path=/;expires=${getOneDayBeforeDate()}`
+            document.cookie = `${key}=;path=/;expires=${getOneDayBeforeDate()}`
         })
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ type, value, handleChange, model, options, values }) => {
+const Input = ({ type, value, handleChange, model, options, values,isReadOnly }) => {
 
   switch (type) {
     case 'text':
@@ -8,7 +8,7 @@ const Input = ({ type, value, handleChange, model, options, values }) => {
     case 'date':
       return (
         <>
-          <input  className=' form-control' name={model} type={type} onChange={handleChange} />
+          <input disabled={isReadOnly} className=' form-control' name={model} type={type} onChange={handleChange} />
         </>
       );
     case 'radio':
